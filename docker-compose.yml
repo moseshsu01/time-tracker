@@ -1,0 +1,51 @@
+services:
+  app:
+    build: ./client
+    container_name: react-ui
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    networks:
+      - time-tracker
+networks:
+  time-tracker:
+    driver: bridge
+
+# services:
+#   app:
+#     build: ./client
+#     container_name: react-ui
+#     stdin_open: true
+#     tty: true
+#     ports:
+#       - "5173:5173"
+#     depends_on:
+#       - server
+#     networks:
+#       - time-tracker
+#   server:
+#     build: ./server
+#     container_name: node-api
+#     restart: always
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - mongo
+#     networks:
+#       - time-tracker
+#   mongo:
+#     image: mongo:7.0
+#     container_name: mongo-db
+#     ports:
+#       - "27018:27017"
+#     networks:
+#       - time-tracker
+#     volumes:
+#       - mongo-data:/data/db
+# networks:
+#   time-tracker:
+#     driver: bridge
+# volumes:
+#   mongo-data:
+#     driver: local
