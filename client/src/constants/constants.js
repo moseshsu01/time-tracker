@@ -1,0 +1,1 @@
+export const projects = ['Project_A', 'Project_B', 'Project_C'];
