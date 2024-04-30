@@ -16,7 +16,7 @@ function Signup() {
       console.log(result);
       navigate('/user/login');
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
   }
 
   return (

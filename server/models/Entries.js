@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const EntrySchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true
+  },
   project_name: {
     type: String,
     required: true,
