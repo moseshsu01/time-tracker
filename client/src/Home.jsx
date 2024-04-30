@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -13,9 +14,14 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      Home
-    </div>
+    <>
+      <div>
+        Home
+      </div>
+      <Link to='/edit-entry'>
+        Login
+      </Link>
+    </>
   );
 }
 
