@@ -1,28 +1,37 @@
 import { useState } from 'react';
-import './Signup.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('http://localhost:8000/user/register', {username, password})
+  const handleLogin = () => {
+    const usernameEmpty = username.trim() === ''
+    const passwordEmpty = password.trim() === '';
+
+    if (usernameEmpty || passwordEmpty) {
+        alert('All fields must be filled out');
+        return;
+    }
+
+    axios.post('http://localhost:8000/user/login', {username, password})
     .then(result => {
-      console.log(result);
-      navigate('/user/login');
+      const username = result.data.username;
+      if (username) {
+        sessionStorage.setItem('username', result.username);
+        navigate('/home');
+      }
     })
     .catch(err => console.log(err))
   }
 
   return (
     <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>Login</h2>
+      <form>
         <div>
           <label>Username</label>
           <input
@@ -43,16 +52,16 @@ function Signup() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type='submit'>
-          Register
-        </button>
       </form>
-      <p>Already have an account</p>
-      <Link to='/login'>
+      <button onClick={handleLogin} type="button">
         Login
+      </button>
+      <p>No account?</p>
+      <Link to='/register'>
+        Signup
       </Link>
     </div>
   );
 }
 
-export default Signup;
+export default Login;
