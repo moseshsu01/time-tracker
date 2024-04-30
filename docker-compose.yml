@@ -16,22 +16,22 @@ services:
     restart: always
     ports:
       - "8000:8000"
-    # depends_on:
-    #   - mongo
+    depends_on:
+      - mongo
     networks:
       - time-tracker
-  # mongo:
-  #   image: mongo:7.0
-  #   container_name: mongo-db
-  #   ports:
-  #     - "27018:27017"
-  #   networks:
-  #     - time-tracker
-  #   volumes:
-  #     - mongo-data:/data/db
+  mongo:
+    image: mongo:7.0
+    container_name: mongo-db
+    ports:
+      - "27018:27017"
+    networks:
+      - time-tracker
+    volumes:
+      - mongo-data:/data/db
 networks:
   time-tracker:
     driver: bridge
-# volumes:
-#   mongo-data:
-#     driver: local
+volumes:
+  mongo-data:
+    driver: local

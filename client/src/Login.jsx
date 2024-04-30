@@ -25,7 +25,13 @@ function Login() {
         navigate('/home');
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      const errStatus = err.response.status;
+      if (errStatus === 404 || errStatus === 401) {
+        alert(err.response.data.message);
+      }
+      console.log(err);
+    });
   }
 
   return (

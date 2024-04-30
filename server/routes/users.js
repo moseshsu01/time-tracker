@@ -4,9 +4,16 @@ var router = express.Router();
 const UserModel = require('../models/Users');
 
 router.post('/register', async function (req, res) {
-  const user = await UserModel.create(req.body);
+  const username = req.body.username;
+  const user = await UserModel.findOne({ username: username });
 
-  return res.send(user);
+  if (user) {
+    return res.status(409).send({ message: 'User with username already exists' });
+  }
+
+  const newUser = await UserModel.create(req.body);
+
+  return res.send(newUser);
 });
 
 router.post('/login', async function (req, res) {

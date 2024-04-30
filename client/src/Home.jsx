@@ -18,8 +18,8 @@ function Home() {
       <div>
         Home
       </div>
-      <Link to='/edit-entry'>
-        Login
+      <Link to='/add-entry'>
+        Add entry
       </Link>
     </>
   );
