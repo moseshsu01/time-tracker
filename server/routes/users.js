@@ -4,7 +4,15 @@ var router = express.Router();
 const UserModel = require('../models/Users');
 
 router.post('/register', async function (req, res) {
-  const username = req.body.username;
+  const { username, password } = req.body;
+  if (!username) {
+    return res.status(400).send({ message: 'Missing username' });
+  }
+
+  if (!password) {
+    return res.status(400).send({ message: 'Missing password' });
+  }
+
   const user = await UserModel.findOne({ username: username });
 
   if (user) {
@@ -13,11 +21,19 @@ router.post('/register', async function (req, res) {
 
   const newUser = await UserModel.create(req.body);
 
-  return res.send(newUser);
+  return res.status(200).send(newUser);
 });
 
 router.post('/login', async function (req, res) {
   const { username, password } = req.body;
+  if (!username) {
+    return res.status(400).send({ message: 'Missing username' });
+  }
+
+  if (!password) {
+    return res.status(400).send({ message: 'Missing password' });
+  }
+
   const user = await UserModel.findOne({ username: username });
 
   if (!user) {
