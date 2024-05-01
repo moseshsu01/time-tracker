@@ -28,7 +28,7 @@ function Signup() {
       }
       console.log(err)
     });
-  }
+  };
 
   return (
     <div>

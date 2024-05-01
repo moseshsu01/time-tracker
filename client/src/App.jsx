@@ -3,7 +3,7 @@ import Login from './Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import PrivateRoutes from './utils/PrivateRoutes';
-import AddEntry from './EditEntry';
+import AddEntry from './AddEntry';
 
 function App() {
   return (

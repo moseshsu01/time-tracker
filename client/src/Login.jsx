@@ -21,7 +21,7 @@ function Login() {
     .then(result => {
       const username = result.data.username;
       if (username) {
-        sessionStorage.setItem('username', result.username);
+        sessionStorage.setItem('username', username);
         navigate('/home');
       }
     })
@@ -32,7 +32,7 @@ function Login() {
       }
       console.log(err);
     });
-  }
+  };
 
   return (
     <div>

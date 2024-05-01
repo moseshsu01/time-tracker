@@ -19,7 +19,7 @@ const EntrySchema = new mongoose.Schema({
   },
   created_at: {
     type: String,
-    default: true
+    default: new Date().toISOString()
   }
 });
 
