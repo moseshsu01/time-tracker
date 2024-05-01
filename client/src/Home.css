@@ -1,0 +1,15 @@
+.home-container {
+  display: flex;
+}
+
+.project-container {
+  display: flex;
+}
+
+.weekly-summary {
+  width: 30%;
+}
+
+.project-wrapper {
+  margin-right: 3rem;
+}

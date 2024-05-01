@@ -31,7 +31,6 @@ function AddEntry() {
     axios.post('http://localhost:8000/entries', entryObj)
     .then(result => {
       alert('Add successful');
-      setProject(projects[0]);
       setHours(0);
       setDescription('');
       console.log(result);
@@ -59,12 +58,12 @@ function AddEntry() {
             </select>
           </div>
 
-          <div className='item-field'>
+          <div>
             <label>Hours</label>
             <input type='number' min='0' step='any' value={hours} onChange={(e) => setHours(e.target.value)}/>
           </div>
 
-          <div className='item-field'>
+          <div>
             <label>Description</label>
             <input type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
           </div>

@@ -3,7 +3,7 @@ var router = express.Router();
 
 const EntryModel = require('../models/Entries');
 
-router.get('/:username', async function (req, res) {
+router.get('/weekly/:username', async function (req, res) {
   const startOfWeek = getStartOfWeek();
   const endOfWeek = new Date(startOfWeek);
   endOfWeek.setDate(endOfWeek.getDate() + 7);
@@ -17,6 +17,24 @@ router.get('/:username', async function (req, res) {
   });
 
   return res.send(entries);
+});
+
+router.get('/project-total/:username', async function (req, res) {
+  const projectTotals = await EntryModel.aggregate([
+    {
+      $match: {
+        username: req.params.username,
+      }
+    },
+    {
+        $group: {
+          _id: "$project_name",
+          totalHours: { $sum: "$hours" }
+        }
+    }
+  ]);
+
+  return res.send(projectTotals);
 });
 
 router.post('/', async function (req, res) {
