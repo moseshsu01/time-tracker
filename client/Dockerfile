@@ -1,5 +1,8 @@
 FROM node:18-alpine
 
+ARG Timezone="America/Vancouver"
+ENV TZ=${Timezone}
+
 WORKDIR /app
 
 EXPOSE 3000

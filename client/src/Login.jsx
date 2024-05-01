@@ -26,11 +26,11 @@ function Login() {
       }
     })
     .catch(err => {
+      console.log(err);
       const errStatus = err.response.status;
       if (errStatus === 404 || errStatus === 401) {
         alert(err.response.data.message);
       }
-      console.log(err);
     });
   };
 

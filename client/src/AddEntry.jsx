@@ -30,6 +30,10 @@ function AddEntry() {
 
     axios.post('http://localhost:8000/entries', entryObj)
     .then(result => {
+      alert('Add successful');
+      setProject(projects[0]);
+      setHours(0);
+      setDescription('');
       console.log(result);
     })
     .catch(err => {

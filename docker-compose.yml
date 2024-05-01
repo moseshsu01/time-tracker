@@ -1,6 +1,9 @@
 services:
   app:
-    build: ./client
+    build:
+      context: ./client
+      args:
+        Timezone: "America/Vancouver"
     container_name: react-ui
     stdin_open: true
     tty: true
@@ -11,7 +14,10 @@ services:
     networks:
       - time-tracker
   server:
-    build: ./server
+    build:
+      context: ./server
+      args:
+        Timezone: "America/Vancouver"
     container_name: node-api
     restart: always
     ports:
