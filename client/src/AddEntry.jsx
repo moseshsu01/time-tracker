@@ -29,25 +29,19 @@ function AddEntry() {
     }
 
     const entryObj = {
-      username: sessionStorage.getItem("username"),
+      username: sessionStorage.getItem('username'),
       project_name: project,
       hours: hours,
       description: description
     };
 
-    console.log(entryObj);
-
     axios.post('http://localhost:8000/entries', entryObj)
-    .then(result => {
+    .then(() => {
       alert('Add successful');
       setHours(0);
       setDescription('');
-      console.log(result);
     })
     .catch(err => {
-      // if (err.response.status === 409) {
-      //   alert(err.response.data.message);
-      // }
       console.log(err)
     });
   }

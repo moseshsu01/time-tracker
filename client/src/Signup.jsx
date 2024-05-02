@@ -20,8 +20,7 @@ function Signup() {
     }
 
     axios.post('http://localhost:8000/user/register', {username, password})
-    .then(result => {
-      console.log(result);
+    .then(() => {
       navigate('/login');
     })
     .catch(err => {
@@ -39,7 +38,7 @@ function Signup() {
         onChangeUsername={(e) => setUsername(e.target.value)}
         onChangePassword={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleSignup} type="button">
+      <button onClick={handleSignup} type='button'>
         Register
       </button>
       <div className='signup-account-message'>Already have an account?</div>

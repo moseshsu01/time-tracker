@@ -18,24 +18,33 @@ function Home() {
   };
 
   useEffect(() => {
-    const username = sessionStorage.getItem("username");
+    const username = sessionStorage.getItem('username');
     axios.get(`http://localhost:8000/entries/weekly/${username}`)
     .then(result => {
       setEntries(result.data);
-      console.log(result);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
     axios.get(`http://localhost:8000/entries/project-total/${username}`)
     .then(result => {
-      setProjectTotals(result.data);
-      console.log(result);
-    })
-    .catch(err => console.log(err))
-  }, []);
+      const projectTotalsMap = {};
 
-  console.log(entries);
-  console.log(projectTotals);
+      for (const item of result.data) {
+        projectTotalsMap[item._id] = item.totalHours;
+      }
+
+      const projectTotalsArr = [];
+
+      for (const project of projects) {
+        projectTotalsArr.push({
+          projectName: project,
+          totalHours: (Math.round(projectTotalsMap[project] * 100) / 100) || 0
+        });
+      }
+      setProjectTotals(projectTotalsArr);
+    })
+    .catch(err => console.log(err));
+  }, []);
 
   return (
     <div className='home-page-container'>
@@ -71,7 +80,7 @@ function Home() {
         {projectTotals.map((projectTotal, i) => {
           return (
             <div key={i} className='project-total-display'>
-              <div className='project-name'>{projectTotal._id}</div>
+              <div className='project-name'>{projectTotal.projectName}</div>
               <div className='project-description'>{`${projectTotal.totalHours} Hours`}</div>
             </div>
           );

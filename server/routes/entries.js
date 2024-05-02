@@ -28,8 +28,8 @@ router.get('/project-total/:username', async function (req, res) {
     },
     {
         $group: {
-          _id: "$project_name",
-          totalHours: { $sum: "$hours" }
+          _id: '$project_name',
+          totalHours: { $sum: '$hours' }
         }
     }
   ]);
@@ -53,8 +53,6 @@ router.post('/', async function (req, res) {
 function getStartOfWeek() {
   const UTCDate = new Date();
   const offset = UTCDate.getTimezoneOffset();
-
-  console.log("offset", offset);
 
   const currTimezoneDate = new Date(UTCDate.getTime() - offset * 60000);
 

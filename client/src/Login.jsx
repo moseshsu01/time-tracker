@@ -43,7 +43,7 @@ function Login() {
         onChangeUsername={(e) => setUsername(e.target.value)}
         onChangePassword={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin} type="button">
+      <button onClick={handleLogin} type='button'>
         Login
       </button>
       <div className='login-account-message'>No account?</div>
