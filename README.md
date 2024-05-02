@@ -6,10 +6,14 @@ This project is a simple time tracker that allows users to track their work by a
 
 After cloning the repo using https://github.com/moseshsu01/time-tracker.git, run
 
-### `docker-compose up`
+### `docker-compose up -d`
 
 in the root folder. This will deploy the database, server, and frontend containers.
 Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
+
+Finally, stop the containers with
+
+### `docker-compose down`
 
 Tests can be ran in the server folder with
 
