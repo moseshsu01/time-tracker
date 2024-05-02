@@ -18,4 +18,4 @@ Tests can be ran in the server folder with
 
 ## Notes
 
-The default timezone for this project is America/Vancouver. If you wish to change it, please do so in lines 6 and 20 in the [docker-compose file] (./docker-compose.yml).
+The default timezone for this project is America/Vancouver. If you wish to change it, please do so in lines 6 and 20 in the docker-compose file [here](./docker-compose.yml).
