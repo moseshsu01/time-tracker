@@ -1,5 +1,7 @@
-.home-container {
+.home-page-container {
   display: flex;
+  min-width: 780px;
+  margin-left: 0.5rem;
 }
 
 .project-container {
@@ -31,5 +33,6 @@
 }
 
 .add-entry-link {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }

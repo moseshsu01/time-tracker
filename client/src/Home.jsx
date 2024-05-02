@@ -3,12 +3,19 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from './constants/constants';
+import { useNavigate } from 'react-router-dom';
+import { EntryDisplay, LogoutButton } from './Components';
 import './Home.css';
-import { EntryDisplay } from './Components';
 
 function Home() {
   const [entries, setEntries] = useState([]);
   const [projectTotals, setProjectTotals] = useState([]);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('username');
+    navigate('/login');
+  };
 
   useEffect(() => {
     const username = sessionStorage.getItem("username");
@@ -31,9 +38,15 @@ function Home() {
   console.log(projectTotals);
 
   return (
-    <div className='home-container'>
+    <div className='home-page-container'>
+      <LogoutButton handleLogout={handleLogout}/>
       <div className='weekly-summary'>
         <h3>Weekly Summary</h3>
+        <div className='add-entry-link'>
+          <Link to='/add-entry'>
+            Add Entry
+          </Link>
+        </div>
         <div className='project-container'>
           {projects.map((project, i) => {
             return (
@@ -63,11 +76,6 @@ function Home() {
             </div>
           );
         })}
-      </div>
-      <div className='add-entry-link'>
-        <Link to='/add-entry'>
-          Add entry
-        </Link>
       </div>
     </div>
   );

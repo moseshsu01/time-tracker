@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { LoginOrSignup } from './Components';
+import './Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -35,34 +37,16 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className='login-page-container'>
       <h2>Login</h2>
-      <form>
-        <div>
-          <label>Username</label>
-          <input
-            type='text'
-            placeholder='Enter username'
-            autoComplete='off'
-            name='username'
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='text'
-            placeholder='Enter password'
-            autoComplete='off'
-            name='password'
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-      </form>
+      <LoginOrSignup
+        onChangeUsername={(e) => setUsername(e.target.value)}
+        onChangePassword={(e) => setPassword(e.target.value)}
+      />
       <button onClick={handleLogin} type="button">
         Login
       </button>
-      <p>No account?</p>
+      <div className='login-account-message'>No account?</div>
       <Link to='/register'>
         Signup
       </Link>

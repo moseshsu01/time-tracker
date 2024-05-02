@@ -2,12 +2,20 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from './constants/constants';
 import axios from 'axios';
+import { LogoutButton } from './Components';
+import { useNavigate } from 'react-router-dom';
 import './AddEntry.css';
 
 function AddEntry() {
   const [project, setProject] = useState(projects[0]);
   const [hours, setHours] = useState(0);
   const [description, setDescription] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('username');
+    navigate('/login');
+  };
 
   const handleAddEntry = () => {
     if (hours <= 0) {
@@ -46,8 +54,14 @@ function AddEntry() {
 
   return (
     <div className='add-entry-page-container'>
+      <LogoutButton handleLogout={handleLogout}/>
       <div className='add-entry-container'>
         <h3>Add a new entry</h3>
+          <div className='home-link'>
+          <Link to='/home'>
+            Home
+          </Link>
+        </div>
         <form>
           <div className='project-field-container'>
             <label className='project-field-label'>Project</label>
@@ -71,11 +85,6 @@ function AddEntry() {
         <button onClick={handleAddEntry} type='button'>
           Add Entry
         </button>
-      </div>
-      <div className='home-link'>
-        <Link to='/home'>
-          Home
-        </Link>
       </div>
     </div>
   );

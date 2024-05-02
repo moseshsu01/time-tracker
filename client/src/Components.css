@@ -25,3 +25,17 @@
   max-height: 8rem;
   overflow: scroll;
 }
+
+.login-or-signup-field {
+  margin-bottom: 0.6rem;
+}
+
+.login-or-signup-field-label {
+  margin-right: 1.5rem;
+}
+
+.logout-button-container {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}

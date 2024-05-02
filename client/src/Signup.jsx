@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { LoginOrSignup } from './Components';
+import './Signup.css';
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -31,34 +33,16 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className='signup-page-container'>
       <h2>Register</h2>
-      <form>
-        <div>
-          <label>Username</label>
-          <input
-            type='text'
-            placeholder='Enter username'
-            autoComplete='off'
-            name='username'
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='text'
-            placeholder='Enter password'
-            autoComplete='off'
-            name='password'
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-      </form>
+      <LoginOrSignup
+        onChangeUsername={(e) => setUsername(e.target.value)}
+        onChangePassword={(e) => setPassword(e.target.value)}
+      />
       <button onClick={handleSignup} type="button">
         Register
       </button>
-      <p>Already have an account</p>
+      <div className='signup-account-message'>Already have an account?</div>
       <Link to='/login'>
         Login
       </Link>

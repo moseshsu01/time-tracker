@@ -12,3 +12,42 @@ export const EntryDisplay = ({ hours, description }) => {
     </div>
   );
 };
+
+export const LoginOrSignup = ({ onChangeUsername, onChangePassword }) => {
+  return (
+    <>
+      <form>
+        <div className='login-or-signup-field'>
+          <label className='login-or-signup-field-label'>Username</label>
+          <input
+            type='text'
+            placeholder='Enter username'
+            autoComplete='off'
+            name='username'
+            onChange={onChangeUsername}
+          />
+        </div>
+        <div className='login-or-signup-field'>
+          <label className='login-or-signup-field-label'>Password</label>
+          <input
+            type='text'
+            placeholder='Enter password'
+            autoComplete='off'
+            name='password'
+            onChange={onChangePassword}
+          />
+        </div>
+      </form>
+    </>
+  );
+};
+
+export const LogoutButton = ({ handleLogout }) => {
+  return (
+    <div className='logout-button-container'>
+      <button onClick={handleLogout} type="button">
+        Logout
+      </button>
+    </div>
+  )
+};
