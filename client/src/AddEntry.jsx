@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from './constants/constants';
 import axios from 'axios';
+import './AddEntry.css';
 
 function AddEntry() {
   const [project, setProject] = useState(projects[0]);
@@ -44,13 +45,12 @@ function AddEntry() {
   }
 
   return (
-    <>
-      <div>{project}</div>
-      <div>
+    <div className='add-entry-page-container'>
+      <div className='add-entry-container'>
         <h3>Add a new entry</h3>
         <form>
-          <div>
-            <label>Project</label>
+          <div className='project-field-container'>
+            <label className='project-field-label'>Project</label>
             <select onChange={e => setProject(e.target.value)}>
               {projects.map((project, i) => (
                 <option value={project} key={i} >{project}</option>
@@ -58,13 +58,13 @@ function AddEntry() {
             </select>
           </div>
 
-          <div>
-            <label>Hours</label>
+          <div className='project-field-container'>
+            <label className='project-field-label'>Hours</label>
             <input type='number' min='0' step='any' value={hours} onChange={(e) => setHours(e.target.value)}/>
           </div>
 
-          <div>
-            <label>Description</label>
+          <div className='project-field-container'>
+            <label className='project-field-label'>Description</label>
             <input type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
           </div>
         </form>
@@ -72,10 +72,12 @@ function AddEntry() {
           Add Entry
         </button>
       </div>
-      <Link to='/home'>
-        Home
-      </Link>
-    </>
+      <div className='home-link'>
+        <Link to='/home'>
+          Home
+        </Link>
+      </div>
+    </div>
   );
 }
 

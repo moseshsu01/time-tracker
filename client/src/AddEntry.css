@@ -1,0 +1,20 @@
+.add-entry-page-container {
+  display: flex;
+  width: 50%;
+}
+
+.add-entry-container {
+  margin-right: 5rem;
+}
+
+.home-link {
+  margin-top: 3rem;
+}
+
+.project-field-container {
+  margin-bottom: 0.5rem;
+}
+
+.project-field-label {
+  margin-right: 2rem;
+}

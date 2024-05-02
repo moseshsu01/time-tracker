@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from './constants/constants';
 import './Home.css';
+import { EntryDisplay } from './Components';
 
 function Home() {
   const [entries, setEntries] = useState([]);
@@ -30,50 +31,45 @@ function Home() {
   console.log(projectTotals);
 
   return (
-    <>
-      <div className='home-container'>
-        <div className='weekly-summary'>
-          <h3>Weekly Summary</h3>
-          <div className='project-container'>
-            {projects.map((project, i) => {
-              return (
-                <div className='project-wrapper' key={i}>
-                  <h4>{project}</h4>
-                  {entries.filter(entry => entry.project_name == project).map((entry, j) => {
-                    return (
-                      <div className='entry-display' key={j}>
-                        <div>
-                          <label>Hours</label>
-                          <div>{entry.hours}</div>
-                        </div>
-                        <div>
-                          <label>Description</label>
-                          <div>{entry.description}</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className='project-totals'>
-          <h3>Project Totals</h3>
-          {projectTotals.map((projectTotal, i) => {
+    <div className='home-container'>
+      <div className='weekly-summary'>
+        <h3>Weekly Summary</h3>
+        <div className='project-container'>
+          {projects.map((project, i) => {
             return (
-              <div key={i}>
-                <label>{projectTotal._id}</label>
-                <div>{`${projectTotal.totalHours} Hours`}</div>
+              <div className='project-wrapper' key={i}>
+                <h4>{project}</h4>
+                {entries.filter(entry => entry.project_name == project).map((entry, j) => {
+                  return (
+                    <EntryDisplay
+                      key={j}
+                      hours={entry.hours}
+                      description={entry.description}
+                    />
+                  );
+                })}
               </div>
             );
           })}
         </div>
       </div>
-      <Link to='/add-entry'>
-        Add entry
-      </Link>
-    </>
+      <div className='project-totals'>
+        <h3>Cumulative Project Totals</h3>
+        {projectTotals.map((projectTotal, i) => {
+          return (
+            <div key={i} className='project-total-display'>
+              <div className='project-name'>{projectTotal._id}</div>
+              <div className='project-description'>{`${projectTotal.totalHours} Hours`}</div>
+            </div>
+          );
+        })}
+      </div>
+      <div className='add-entry-link'>
+        <Link to='/add-entry'>
+          Add entry
+        </Link>
+      </div>
+    </div>
   );
 }
 

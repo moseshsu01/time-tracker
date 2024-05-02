@@ -7,9 +7,29 @@
 }
 
 .weekly-summary {
+  width: 50%;
+  margin-right: 3rem;
+  margin-bottom: 4rem;
+}
+
+.project-totals {
   width: 30%;
+  margin-right: 2rem;
+  margin-bottom: 4rem;
+}
+
+.project-total-display {
+  display: flex;
 }
 
 .project-wrapper {
   margin-right: 3rem;
+}
+
+.project-name {
+  margin-right: 1rem;
+}
+
+.add-entry-link {
+  margin-top: 3rem;
 }
