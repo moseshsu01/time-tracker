@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import './Login.css';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -35,6 +36,10 @@ function Login() {
       }
     });
   };
+
+  useEffect(() => {
+    sessionStorage.removeItem('username');
+  }, []);
 
   return (
     <div className='login-page-container'>

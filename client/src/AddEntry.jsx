@@ -10,6 +10,7 @@ function AddEntry() {
   const [project, setProject] = useState(projects[0]);
   const [hours, setHours] = useState(0);
   const [description, setDescription] = useState('');
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -41,9 +42,7 @@ function AddEntry() {
       setHours(0);
       setDescription('');
     })
-    .catch(err => {
-      console.log(err)
-    });
+    .catch(err => console.log(err));
   }
 
   return (

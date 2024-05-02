@@ -27,10 +27,10 @@ router.get('/project-total/:username', async function (req, res) {
       }
     },
     {
-        $group: {
-          _id: '$project_name',
-          totalHours: { $sum: '$hours' }
-        }
+      $group: {
+        _id: '$project_name',
+        totalHours: { $sum: '$hours' }
+      }
     }
   ]);
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,10 @@ function Signup() {
       console.log(err)
     });
   };
+
+  useEffect(() => {
+    sessionStorage.removeItem('username');
+  }, []);
 
   return (
     <div className='signup-page-container'>
